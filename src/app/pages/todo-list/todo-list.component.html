@@ -1,0 +1,9 @@
+<div class="container m-auto">
+    <h2 class="text-white text-xl">Todos</h2>
+    @for(todo of userTodos$.value; track todo.id) {
+    <div [ngClass]="todo?.completed ? 'border-green-600 bg-green-600 hover:bg-green-600' : 'border-red-500 bg-red-500 hover:bg-red-500'"
+        class="py-2 my-4 pl-2 border-2 bg-opacity-15">
+        <p class="text-yellow-100">{{ todo.title}}</p>
+    </div>
+    }
+</div>

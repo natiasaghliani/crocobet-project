@@ -1,0 +1,44 @@
+<div class="container mx-auto">
+    <input type="text" placeholder="Search..."
+        class="mb-6 p-2 border rounded border-teal-800 w-full bg-[#072c38cc] focus:bg-[#1a3b45] outline-none text-white"
+        (input)="findUsersByString($event)" />
+    <div class="overflow-x-auto">
+        <table class="w-full border-separate bg-[#00141e] text-gray-400">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left border-b">Full Name</th>
+                    <th class="px-4 py-2 text-left border-b">Phone</th>
+                    <th class="px-4 py-2 text-left border-b">Email</th>
+                    <th class="px-4 py-2 text-left border-b">Company</th>
+                    <th class="px-4 py-2 text-left border-b">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @for(user of filteredUsers; track user.id) {
+
+                <tr (click)="findUsersByString($event)">
+                    <td class="py-4 px-4 border-b">{{ user.name }}</td>
+                    <td class="py-4 px-4 border-b">{{ user.phone }}</td>
+                    <td class="py-4 px-4 border-b">{{ user.email }}</td>
+                    <td class="py-4 px-4 border-b">{{ user.company.name }}</td>
+                    <td class="py-4 px-4 border-b">
+                        <a (click)="getPostsByUserId(user.id)"
+                            class="bg-blue-800 text-white py-1 px-2 rounded hover:bg-blue-900 transition m-2 cursor-pointer">Posts</a>
+                        <a [routerLink]="['/todos', user.id]"
+                            class="bg-violet-800 text-white py-1 px-2 rounded hover:bg-violet-900 transition m-2 cursor-pointer">Todo</a>
+                    </td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="5">
+                        <h3 class="text-white text-lg mt-4 ml-5">
+                            No Users Found
+                        </h3>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

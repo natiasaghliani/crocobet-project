@@ -1,0 +1,12 @@
+<div class="container mx-auto p-4">
+    @if(userPosts$){
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        @for(post of userPosts$.value; track post.id){
+        <div class="bg-[#072c38cc] p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all transform duration-500 border-2 border-green-600">
+            <div class="mb-2">
+                <h2 class="font-bold text-gray-300 mb-3 text-base sm:text-2xl ">{{ post.title }}</h2>
+                <p class="text-sm text-gray-300">{{ post.body}}</p>
+            </div>
+        </div>}
+    </div>}
+</div>
